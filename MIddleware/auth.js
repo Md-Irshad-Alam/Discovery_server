@@ -23,7 +23,7 @@ async function middleware(req, res, next) {
                 user = user.toJSON();
     
                 delete user.password;
-    
+                    
                 // Modify the request object to contain the authenticated user
                 req.user = user;
     

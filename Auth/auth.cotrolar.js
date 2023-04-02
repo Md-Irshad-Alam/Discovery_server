@@ -11,10 +11,10 @@ let generateToken = (user)=>{
 
 let register=async(req,res)=>{
     try {
-        let {name, email, password} = req.body;
+        let {email} = req.body;
         let user = await User.findOne({email})
         if(user){
-            return res.send({error:"user email already registered"})
+            return res.status(401).send({error:"already registered"})
         }else{
             user = await User.create(req.body)
           
@@ -44,6 +44,7 @@ const login = async(req, res) => {
         return res.status(500).send(error.message);
     }
 }
+
 async function getLoggedInUser(req, res) {
     try {
         const user = req.user;
